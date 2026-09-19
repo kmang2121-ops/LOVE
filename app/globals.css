@@ -1,0 +1,133 @@
+@import "tailwindcss";
+
+body {
+  background: #fdf2f8;
+  color: #18181b;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans Thai',
+    'Helvetica Neue', Arial, sans-serif;
+}
+
+:root {
+  color-scheme: light;
+}
+
+/* ───────────────────────────────────────────────────────────────
+   แอนิเมชันของการ์ด — คลาสทั้งหมดขึ้นต้นด้วย rak-
+   ─────────────────────────────────────────────────────────────── */
+
+/* การ์ดค่อย ๆ ลอยขึ้นมาตอนเปิดหน้า และตอนเปลี่ยนคำบอกรัก */
+@keyframes rak-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* มาสคอตขยับขึ้นลงเบา ๆ ให้การ์ดไม่นิ่งสนิท */
+@keyframes rak-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+/* หัวใจที่ปล่อยออกไปตอนจบ — ลอยขึ้นแล้วจางหาย */
+@keyframes rak-release {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.6) rotate(0deg);
+  }
+  15% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--rak-drift, 0px), -78dvh) scale(1.2) rotate(var(--rak-spin, 12deg));
+  }
+}
+
+/* แมวสะบัดตัวตอนโดนแตะ — รูปนิ่งเปลี่ยนสีหน้าไม่ได้ ใช้การขยับแทนคำตอบ */
+@keyframes rak-wiggle {
+  0%,
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+  25% {
+    transform: rotate(-4deg) scale(1.05);
+  }
+  65% {
+    transform: rotate(4deg) scale(1.02);
+  }
+}
+
+/* หัวใจที่เด้งขึ้นตรงนิ้วตอนแตะแมว — ระยะสั้นกว่าหัวใจที่ปล่อยตอนจบ */
+@keyframes rak-pop {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.5);
+  }
+  25% {
+    opacity: 1;
+    transform: translate(0, -10px) scale(1.15);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--rak-drift, 0px), -54px) scale(0.9);
+  }
+}
+
+/* ประกายเล็ก ๆ รอบการ์ด */
+@keyframes rak-twinkle {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
+.rak-card {
+  animation: rak-rise-in 0.45s ease-out both;
+}
+.rak-bob {
+  animation: rak-bob 3.2s ease-in-out infinite;
+}
+.rak-release {
+  /* เริ่มที่มองไม่เห็น ให้แอนิเมชันเป็นคนพาปรากฏ เครื่องที่ปิดการเคลื่อนไหวจะได้ไม่เห็นค้าง */
+  opacity: 0;
+  animation: rak-release 3.4s linear forwards;
+}
+.rak-wiggle {
+  animation: rak-wiggle 0.6s ease-in-out;
+}
+.rak-pop {
+  opacity: 0;
+  animation: rak-pop 1s ease-out forwards;
+}
+.rak-twinkle {
+  animation: rak-twinkle 2.6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rak-card,
+  .rak-bob,
+  .rak-wiggle,
+  .rak-release,
+  .rak-pop,
+  .rak-twinkle {
+    animation: none;
+  }
+  .rak-card {
+    opacity: 1;
+  }
+}
