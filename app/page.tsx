@@ -305,7 +305,7 @@ export default function LoveCardPage() {
             style={
               {
                 left: `${heart.left}%`,
-                bottom: '-2.5rem',
+                top: '-2.5rem',
                 animationDelay: `${heart.delay}s`,
                 '--rak-drift': `${heart.drift}px`,
                 '--rak-spin': `${heart.spin}deg`,

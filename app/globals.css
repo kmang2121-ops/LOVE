@@ -38,7 +38,7 @@ body {
   }
 }
 
-/* หัวใจที่ปล่อยออกไปตอนจบ — ลอยขึ้นแล้วจางหาย */
+/* หัวใจที่ปล่อยออกไปตอนจบ — ร่วงลงมาจากขอบบนแล้วจางหาย */
 @keyframes rak-release {
   0% {
     opacity: 0;
@@ -49,7 +49,7 @@ body {
   }
   100% {
     opacity: 0;
-    transform: translate(var(--rak-drift, 0px), -78dvh) scale(1.2) rotate(var(--rak-spin, 12deg));
+    transform: translate(var(--rak-drift, 0px), 106dvh) scale(1.2) rotate(var(--rak-spin, 12deg));
   }
 }
 
